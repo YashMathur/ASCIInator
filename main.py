@@ -11,7 +11,7 @@ parser.add_argument('image', help='input image file')
 try:
 	img = Image.open("main.jpg")
 except:
-	print "Unable to load image"
+	print("Unable to load image")
 
-print "Size of image: "
+print("Size of image: ")
 print(img.format, img.size, img.mode)
