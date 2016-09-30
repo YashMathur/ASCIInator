@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from argparse import ArgumentParser
 from PIL import Image, ImageFilter
 
