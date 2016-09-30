@@ -16,24 +16,12 @@ except:
 	print("Unable to load image")
 	exit()
 
-
-# Resizing the image
-#print(type(args))
-#print(dir(args))
-#print(args.font_ratio)
-#print('\n')
 basewidth = args.width
 wpercent = float((basewidth/float(img.size[0])))
 hsize = int((float(img.size[1])*wpercent*args.font_ratio))
 img = img.resize((basewidth, hsize))
 
-
-img.save('grayscale.png')
 im = img.load();
-print("grayscale: ")
-print(im[99, 30])
-print("Size of image: ")
-print(img.format, img.size, img.mode)
 
 width, height = img.size
 
