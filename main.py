@@ -34,6 +34,7 @@ def asciiChar(intensityTuple):
     asciiString=' .:-=+*#%@'
     newIntensity=9-int(round(intensity*10/255, 0))
     return asciiString[newIntensity]
+
 output=""
 for i in range(0, height-1):
 	for j in range(0, width-1):
