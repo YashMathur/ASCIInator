@@ -1,0 +1,5 @@
+take the input file
+convert to greyscale
+scale (width, maintain aspect ratio, absolute) :(font-size / font-ratio) * width-output-in-characters 
+sacle (height only, relative) font-ratio
+for each color intensity output a character
