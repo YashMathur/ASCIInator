@@ -1,6 +1,6 @@
 #ASCIInator
 
-A python program that converts images into ASCII characters
+A python program that converts images into ASCII art
 
 Authors: Yash Mathur (@YashMathur), Ambareesh Balaji (@ambyjkl)
 
