@@ -9,9 +9,12 @@ parser.add_argument('--output', '-o', help='output file (defaults to filename.tx
 parser.add_argument('image', help='input image file')
 
 try:
-	img = Image.open("main.jpg")
+	img = Image.open("main.jpg").convert('LA')
 except:
 	print("Unable to load image")
 
+img.save('grayscale.png')
+im = img.load();
+#print(im[1, 1])
 print("Size of image: ")
 print(img.format, img.size, img.mode)
