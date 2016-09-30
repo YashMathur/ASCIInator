@@ -34,8 +34,8 @@ print(im[99, 30])
 print("Size of image: ")
 print(img.format, img.size, img.mode)
 
-width, height = im.size
+width, height = img.size
 
-for i in range(0, height-1):
-	for j in range(0, width-1):
-		print(ASCIIChar(im[i][j]))
+#for i in range(0, height-1):
+#	for j in range(0, width-1):
+#		print(ASCIIChar(im[i][j]))
