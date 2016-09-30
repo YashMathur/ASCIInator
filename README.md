@@ -26,8 +26,7 @@ python3 main.py -h
 
 ##Arch Linux
 ```bash
-sudo pacman -S python pip
-sudo pip install pillow
+sudo pacman -S python-pillow
 git clone https://github.com/YashMathur/ASCIInator.git
 cd ASCIInator
 python main.py -h
