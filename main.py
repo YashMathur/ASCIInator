@@ -7,7 +7,7 @@ parser.add_argument('--font-size', '-f', type=int, default=12, help='size of the
 parser.add_argument('--font-ratio', type=float, default=1.0, help='ratio of the width of the font to the height of the font')
 parser.add_argument('--output', '-o', help='output file (defaults to filename.txt)')
 parser.add_argument('image', help='input image file')
-
+args = parser.parse_args()
 try:
 	img = Image.open("main.jpg").convert('LA')
 except:
