@@ -15,7 +15,7 @@ if args.output is None:
     args.output = args.image + ".txt"
 
 try:
-	img = Image.open(args.image).convert('LA')
+	img = Image.open(args.image)
 except:
 	print("Unable to load image")
 	exit()
@@ -29,17 +29,14 @@ im = img.load();
 
 width, height = img.size
 
-def asciiChar(intensityTuple):
-    intensity=intensityTuple[0]
-    asciiString=' .:-=+*#%@'
-    newIntensity=9-int(round(intensity*10/255, 0))
-    return asciiString[newIntensity]
+def colorChar(rgb):
+    outputString = "\033[38;2;"+str(rgb[0])+";"+str(rgb[1])+";"+str(rgb[2])+"m█"
+    return outputString
 output=""
 for i in range(0, height-1):
 	for j in range(0, width-1):
-		output+=asciiChar(im[j,i])
+		output+=colorChar(im[j,i])
 	output+='\n'
-
 outputFile = open(args.output,"w")
 print(output)
 print(output,file = outputFile)
