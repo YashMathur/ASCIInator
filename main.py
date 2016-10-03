@@ -15,7 +15,7 @@ if args.output is None:
     args.output = args.image + ".txt"
 
 try:
-	img = Image.open(args.image)
+	img = Image.open(args.image).convert("RGBA")
 except:
 	print("Unable to load image")
 	exit()
@@ -29,8 +29,11 @@ im = img.load();
 
 width, height = img.size
 
-def colorChar(rgb):
-    outputString = "\033[38;2;"+str(rgb[0])+";"+str(rgb[1])+";"+str(rgb[2])+"m█"
+def colorChar(rgba):
+    if rgba[3] == 0:
+        outputString = ' '
+    else:
+        outputString = "\033[38;2;"+str(rgba[0])+";"+str(rgba[1])+";"+str(rgba[2])+"m█"
     return outputString
 output=""
 for i in range(0, height-1):
