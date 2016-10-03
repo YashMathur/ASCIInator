@@ -1,6 +1,6 @@
-#ASCIInator
+#ASCIInator Color Branch
 
-A python program that converts images into ASCII art
+A python program that converts images into block characters colored using ANSI escape sequences
 
 Authors: Yash Mathur (@YashMathur), Ambareesh Balaji (@ambyjkl)
 
