@@ -11,7 +11,7 @@ Authors: Yash Mathur (@YashMathur), Ambareesh Balaji (@ambyjkl)
 ```bash
 brew install python3 pip3
 sudo pip3 install Pillow
-git clone https://github.com/YashMathur/ASCIInator.git
+git clone https://github.com/YashMathur/ASCIInator.git --branch color
 cd ASCIInator
 python3 main.py -h
 ```
@@ -20,7 +20,7 @@ python3 main.py -h
 ```bash
 sudo apt-get install python3 pip3
 sudo pip3 install pillow
-git clone https://github.com/YashMathur/ASCIInator.git
+git clone https://github.com/YashMathur/ASCIInator.git --branch color
 cd ASCIInator
 python3 main.py -h
 ```
@@ -28,7 +28,7 @@ python3 main.py -h
 ##Arch Linux
 ```bash
 sudo pacman -S python-pillow
-git clone https://github.com/YashMathur/ASCIInator.git
+git clone https://github.com/YashMathur/ASCIInator.git --branch color
 cd ASCIInator
 python main.py -h
 ```
