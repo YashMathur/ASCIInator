@@ -16,7 +16,7 @@ cd ASCIInator
 python3 main.py -h
 ```
 
-##Ubuntu
+##Ubuntu / Bash on Windows 10
 ```bash
 sudo apt-get install python3 pip3
 sudo pip3 install pillow
