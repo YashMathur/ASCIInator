@@ -4,6 +4,9 @@ A python program that converts images into ASCII art
 
 Authors: Yash Mathur (@YashMathur), Ambareesh Balaji (@ambyjkl)
 
+##Demo
+![alt text](demo.png "Harambe")
+
 #Installation
 
 ##macOS
