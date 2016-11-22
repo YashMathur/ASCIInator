@@ -1,9 +1,12 @@
 #ASCIInator Color Branch
 
 A python program that converts images into block characters colored using ANSI escape sequences
-(NOTE: always open the output file using cat on an xterm-like terminal for the escape sequences to do their magic)
+(NOTE: always open the output file using cat on an xterm-compatible terminal for the escape sequences to do their magic)
 
 Authors: Yash Mathur (@YashMathur), Ambareesh Balaji (@ambyjkl)
+
+##Demo
+![alt text](demo.png "Harambe")
 
 #Installation
 
