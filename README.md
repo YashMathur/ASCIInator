@@ -1,7 +1,7 @@
 #ASCIInator
 
 A python program that converts images into ASCII art and pixel art.
-(NOTE: ensure that your terminal supports ISO-8613-3 24-bit foreground color setting for outputing pixel art correctly. macOS's default terminal is not known to support. Use iTerm2.)
+(NOTE: ensure that your terminal supports ISO-8613-3 24-bit foreground color setting for outputing pixel art correctly. macOS's default terminal is not known to support it. Use iTerm2.)
 
 Authors: Yash Mathur (@YashMathur), Ambareesh Balaji (@ambyjkl)
 
