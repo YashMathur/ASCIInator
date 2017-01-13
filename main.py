@@ -29,12 +29,21 @@ im = img.load();
 
 width, height = img.size
 
+<<<<<<< HEAD
 def colorChar(rgba):
     if rgba[3] == 0:
         outputString = ' '
     else:
         outputString = "\033[38;2;"+str(rgba[0])+";"+str(rgba[1])+";"+str(rgba[2])+"m█"
     return outputString
+=======
+def asciiChar(intensityTuple):
+    intensity=intensityTuple[0]
+    asciiString=' .:-=+*#%@'
+    newIntensity=9-int(round(intensity*10/255, 0))
+    return asciiString[newIntensity]
+
+>>>>>>> master
 output=""
 for i in range(0, height-1):
 	for j in range(0, width-1):

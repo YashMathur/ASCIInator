@@ -6,7 +6,7 @@ A python program that converts images into block characters colored using ANSI e
 Authors: Yash Mathur (@YashMathur), Ambareesh Balaji (@ambyjkl)
 
 ##Demo
-![alt text](demo.png "Harambe")
+![alt text](demo-color.png "Harambe")
 
 #Installation
 
