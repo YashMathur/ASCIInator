@@ -30,10 +30,12 @@ parser.add_argument(
     '-H',
     help='use more gray levels for more detail',
     action='store_true')
+parser.add_argument('--stdout','-s', help='output result to stdout, ignores --output',action='store_true')
 args = parser.parse_args()
 
-if args.output is None:
-    args.output = args.image + ".txt"
+if not args.stdout:
+    if args.output is None:
+        args.output = args.image + ".txt"
 
 
 def foreList(fore):
@@ -188,7 +190,6 @@ def highAsciiChar(intensityTuple):
     newIntensity = 69 - int(round(intensity * 70 / 255, 0))
     return asciiString[newIntensity]
 
-
 try:
     img = Image.open(args.image)
 except:
@@ -209,6 +210,7 @@ im = img.load()
 width, height = img.size
 
 output = []
+
 if args.pixel:
     b = None
     f = None
@@ -220,6 +222,7 @@ if args.pixel:
             b = None
             output.append('\033[49m')
         output.append('\n')
+    output.append('\033[0m')
 
 elif args.high:
     for i in range(0, height - 1):
@@ -230,6 +233,7 @@ elif args.high:
         if args.invert:
             output.append("\033[0m")
         output.append('\n')
+
 else:
     for i in range(0, height - 1):
         if args.invert:
@@ -239,9 +243,15 @@ else:
         if args.invert:
             output.append("\033[0m")
         output += '\n'
-outputFile = open(args.output, "w")
+
 outputString = ''.join(output)
+
 from re import sub
 outputString = sub(r' +\n', r'\n', outputString)
-print(outputString, end='')
-print(outputString, file=outputFile)
+outputString = sub(r'\n\n+',r'\n',outputString)
+
+if args.stdout:
+    print(outputString, end='')
+else:
+    outputFile = open(args.output, "w")
+    print(outputString, file=outputFile)
