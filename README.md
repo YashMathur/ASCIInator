@@ -10,6 +10,10 @@ ASCII art:
 
 ![Harambe in grayscale](demo.png)
 
+ASCII art with high detail:
+
+![Harambe is high](demo-high.png)
+
 Pixel art:
 
 ![Harambe in color](demo-color.png)
