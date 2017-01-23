@@ -30,7 +30,16 @@ parser.add_argument(
     '-H',
     help='use more gray levels for more detail',
     action='store_true')
-parser.add_argument('--stdout','-s', help='output result to stdout, ignores --output',action='store_true')
+parser.add_argument(
+    '--stdout',
+    '-s',
+    help='output result to stdout, ignore --output',
+    action='store_true')
+parser.add_argument(
+    '--strip-emptylines',
+    '-S',
+    help='strip useless newlines from beginning and end of the output',
+    action='store_true')
 args = parser.parse_args()
 
 if not args.stdout:
@@ -190,6 +199,7 @@ def highAsciiChar(intensityTuple):
     newIntensity = 69 - int(round(intensity * 70 / 255, 0))
     return asciiString[newIntensity]
 
+
 try:
     img = Image.open(args.image)
 except:
@@ -214,44 +224,65 @@ output = []
 if args.pixel:
     b = None
     f = None
-    for i in range(0, int((height - 1) / 2)):
-        for j in range(1, width - 1):
+    heightPairs = height // 2
+    remainder = height % 2
+    for i in range(heightPairs - 1):
+        for j in range(width):
             newPixel, b, f = colorChar(im[j, i * 2], im[j, i * 2 + 1], b, f)
             output.append(newPixel)
         if b is not None:
             b = None
             output.append('\033[49m')
         output.append('\n')
+    i = heightPairs - 1
+    for j in range(width):
+        newPixel, b, f = colorChar(im[j, i * 2], im[j, i * 2 + 1], b, f)
+        output.append(newPixel)
+    if remainder != 0:
+        if b is not None:
+            b = None
+            output.append('\033[49m')
+        i = height - 1
+        for j in range(width):
+            newPixel, b, f = colorChar(im[j, i], [0, 0, 0, 0], b, f)
     output.append('\033[0m')
 
 elif args.high:
-    for i in range(0, height - 1):
+    for i in range(height):
         if args.invert:
             output.append("\033[30;47m")
-        for j in range(0, width - 1):
+        for j in range(width):
             output.append(highAsciiChar(im[j, i]))
         if args.invert:
             output.append("\033[0m")
         output.append('\n')
-
+    del output[-1]
 else:
-    for i in range(0, height - 1):
+    for i in range(height):
         if args.invert:
             output.append("\033[30;47m")
-        for j in range(0, width - 1):
+        for j in range(width):
             output.append(asciiChar(im[j, i]))
         if args.invert:
             output.append("\033[0m")
-        output += '\n'
+        output.append('\n')
+    del output[-1]
 
 outputString = ''.join(output)
 
 from re import sub
-outputString = sub(r' +\n', r'\n', outputString)
-outputString = sub(r'\n\n+',r'\n',outputString)
+outputString = sub(r' +\n', '\n', outputString)
+
+if args.strip_emptylines:
+    if args.pixel:
+        outputString = sub(r'^( *(.\[((0)|(49))m)?\n)+', '', outputString)
+        outputString = sub(r'\n+ +.\[0m\n?$', '\033[0m', outputString)
+    else:
+        outputString = sub(r'^( +\n)+', '', outputString)
+        outputString = sub(r'\n+ +\n?$', '', outputString)
 
 if args.stdout:
-    print(outputString, end='')
+    print(outputString)
 else:
     outputFile = open(args.output, "w")
     print(outputString, file=outputFile)
